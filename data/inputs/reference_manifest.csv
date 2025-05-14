@@ -1,0 +1,9 @@
+reference_id,reference_path
+crt,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_crt.fasta
+dhfr,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_dhfr.fasta
+dhps,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_dhps.fasta
+mdr1,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_mdr1.fasta
+k13,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_k13.fasta
+csp,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_csp.fasta
+msp1,./data/inputs/reference/target_gene_cds_seqs/ref_target_gene_cds_seq_msp1.fasta
+zebrafish_shh,./data/inputs/reference/non_pf_refs/zebrafish_shh_gene.fasta

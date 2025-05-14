@@ -1,0 +1,12 @@
+Reference genomes fasta file names
+
+control_DNA_CS.fasta
+ref_target_gene_cds_DR_3D7_crt.fasta
+ref_target_gene_cds_DR_3D7_dhfr.fasta
+ref_target_gene_cds_DR_3D7_dhps.fasta
+ref_target_gene_cds_DR_3D7_mdr1.fasta
+ref_target_gene_cds_DR_3D7_k13.fasta
+ref_target_gene_cds_AG_3D7_csp.fasta
+ref_target_gene_cds_AG_3D7_msp2.fasta
+ref_target_gene_cds_AG_DD2_msp2.fasta
+ref_target_gene_SD_3D7_18S.fasta

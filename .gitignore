@@ -1,0 +1,15 @@
+.idea
+venv
+*.swp
+*.img
+.nextflow*
+work
+.nf-test
+*.o
+*.e
+test_data
+output
+*/*/.RData
+*/*/.Rhistory
+data/inputs/sample/*
+scripts/data/*
