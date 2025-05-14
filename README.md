@@ -1,4 +1,4 @@
-# nano-rave
+# nano-rave ([git-reference](https://github.com/sanger-pathogens/nano-rave))
 Nextflow pipeline designed for rapid onsite QC and variant calling of Oxford Nanopore data (following basecalling and demultiplexing with [Guppy](https://nanoporetech.com/how-it-works/basecalling#_neural-networks)).
 
 ## Pipeline summary
@@ -187,6 +187,8 @@ Developer contributions to this pipeline will only be accepted if all pipeline t
    If running on Sanger HPC cluster, add the option `--profile sanger_local`.
 
 4. Submit a PR.
+
+# [Nanorave MinION Genomic Analysis - R Script Pipeline](./analysis/README.md)
 
 ## Citations
 If you use this pipeline for your analysis, please cite our paper:
