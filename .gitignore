@@ -13,3 +13,4 @@ output
 */*/.Rhistory
 data/inputs/sample/*
 scripts/data/*
+trace*

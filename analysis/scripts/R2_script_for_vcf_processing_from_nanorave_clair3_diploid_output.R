@@ -468,7 +468,7 @@ for (k in 1:maxn) {
   
 }
 
-mylist_sample_vars[[3]]
+#mylist_sample_vars[[3]]
 length(mylist_sample_vars)
 
 # get the list of SNPs to be included
@@ -482,18 +482,12 @@ head(snp_list)
   
 for(m in 1:maxn) {
   mylist_sample_vars[[m]] <- left_join(snp_list, mylist_sample_vars[[m]], by="snp_id") %>%
-    arrange(snp_id) %>% # make sure all in the same order so can cbind it all together
-    select(-snp_id) # now drop the snp id columns to cbind all the genotypes together
+    arrange(snp_id) # keep snp_id for joining later
 }
 
-mylist_sample_vars[[2]]
-nrow(mylist_sample_vars[[2]]) # should be number of key_snps == 17
-
-# cbind the genotype calls
-keysnps_allsamps_gt_novars <- do.call(cbind, mylist_sample_vars)
-
-# and cbind the snp info back in
-keysnps_allsamps_gt <- cbind(snp_list, keysnps_allsamps_gt_novars)
+# Merge all sample columns by snp_id
+keysnps_allsamps_gt <- reduce(mylist_sample_vars, full_join, by = "snp_id") %>%
+  arrange(snp_id)
 
 ## Replace NA with wild-type genotype call
 keysnps_allsamps_gt <- keysnps_allsamps_gt %>% replace(is.na(.), 0)
@@ -786,6 +780,9 @@ names(snp_calls_t) <- c('sample_id', var_cols)
 ## dhfr
 # Options = IRNI (51I*-59R*-108N*-164I); or NRNI (51N-59R*-108N*-164I) or ICNI (51I*-59C-108N*-164I), or Other
 # WT = NCSI
+# Ensure column names are unique to avoid within() assignment errors
+colnames(snp_calls_t) <- make.unique(colnames(snp_calls_t), sep = "_")
+
 snp_calls_t2 <- within(snp_calls_t, {
   dhfr_haplotype <-
     ifelse( (dhfr_152_AT==1 &
@@ -1040,8 +1037,10 @@ for (t in 1:maxn) {
 
 if (length(mylist_csp_vars) > 0) {
   csp_samp_calls <- mylist_csp_vars[[1]]  # Start with the first element
-  for (i in 2:length(mylist_csp_vars)) {  # Loop through the remaining elements
-    csp_samp_calls <- full_join(csp_samp_calls, mylist_csp_vars[[i]], by = "snp_id")
+  if (length(mylist_csp_vars) > 1) {
+    for (i in 2:length(mylist_csp_vars)) {  # Loop through the remaining elements
+      csp_samp_calls <- full_join(csp_samp_calls, mylist_csp_vars[[i]], by = "snp_id")
+    }
   }
 } else {
   csp_samp_calls <- tibble::tibble(snp_id = character())  # Create an empty tibble
