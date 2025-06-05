@@ -64,11 +64,14 @@ def process_gene_coverage(gene):
         amp_pos_gene = amp_pos_raw[amp_pos_raw["gene"] == gene]
         if amp_pos_gene.empty:
             print(f"⚠️ Amplicon positions not found for {gene}, skipping...")
-            continue
-        amp_pos_gene = amp_pos_gene.iloc[0]
+            #continue
+            df_filtered = df
+        else:
+            amp_pos_gene = amp_pos_gene.iloc[0]
 
-        df_filtered = df[(df["start"] > amp_pos_gene["amplicon_start"]) & 
+            df_filtered = df[(df["start"] > amp_pos_gene["amplicon_start"]) & 
                          (df["end"] < amp_pos_gene["amplicon_end"])]
+
         # Check if filtered data is empty before processing
         if df_filtered.empty:
             print(f"⚠️ No data found for barcode {barcode} - gene {gene}, skipping...")
@@ -107,7 +110,20 @@ def process_gene_coverage(gene):
     return pd.DataFrame(gene_coverages)
 
 # Process all genes
-target_genes = ["crt", "dhfr", "dhps", "mdr1", "k13", "csp"]
+target_genes = [
+    "crt",
+    "dhfr",
+    "dhps",
+    "mdr1",
+    "k13",
+    "csp",
+    "msp1",
+    "hrp2",
+    "hrp3",
+    "msp2",
+    "18SPF"
+]
+
 
 coverage_dfs = [process_gene_coverage(gene) for gene in target_genes if process_gene_coverage(gene) is not None]
 coverage_df = pd.concat(coverage_dfs, ignore_index=True)
