@@ -17,7 +17,7 @@ Computes and summarizes **amplicon coverage** statistics per sample and amplicon
 ```bash
 Rscript R1_script_for_amplicon_coverage_from_nanorave_clair3_diploid_output.R -m GAMP_22906B2 -g clair3_diploid_2 -d 20250511 -a /path/to/output/
 ````
-
+Or use the python script with the same arg
 ### 📥 Required Parameters
 
 * `-m`: MinION run name (e.g., `GAMP_22906B2`)
@@ -60,6 +60,7 @@ Generates **coverage summary plots** for the MinION run (e.g., depth per amplico
 ```bash
 Rscript R3_script_for_coverage_plot_MinION_run_B2.R
 ```
+Or use the python script with the same arg
 
 > ⚠️ Assumes processed coverage tables already exist from **R1\_script**.
 
@@ -80,6 +81,7 @@ Plots **drug resistance haplotype frequencies** (e.g., dhfr, dhps) and **ART/CQ/
 ```bash
 Rscript R4_script_for_plotting_drug_resistance_frequencies_MinION_run_B2.R
 ```
+Or use the python script with the same arg
 
 > ⚠️ Requires output from **R2\_script** (`genotype_calls_haplotypes_samplerows_v2.csv`).
 
